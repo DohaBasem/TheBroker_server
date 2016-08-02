@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var User = require('../models/user');
-
+var assets=require('../models/asset');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('Heeey from users');
@@ -26,4 +26,22 @@ router.post('/login', function (req, res, next) {
     }
   });
 });
+
+router.get('/getAllItems',function (req,res,next) {
+     assets.find({},function (err,response) {
+       if(err) {
+         res.json({
+           error : true
+         });
+       }
+       else{
+
+         res.json({
+           assets: response,
+           error : false
+         });
+       }
+ })
+});
+
 module.exports = router;

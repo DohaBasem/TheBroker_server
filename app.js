@@ -12,7 +12,7 @@ var connector =require('./util/connector');
 var db_url="  mongodb://doha_basem:doha93@ds139725.mlab.com:39725/the_broker_db";
 
 var app = express();
-var cors=require();
+var cors=require('cors');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

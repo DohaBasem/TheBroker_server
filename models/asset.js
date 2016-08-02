@@ -17,8 +17,8 @@ var assetSchema=new moongoose.Schema({
     price:{
         type:Number
     },
-    owner:{
+   /* owner:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
-    }
+    }*/
 });
