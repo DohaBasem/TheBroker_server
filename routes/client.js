@@ -15,7 +15,6 @@ router.post('/addItem',function (req,res,next) {
         owner:req.header("price")
 
     };
-
     console.log("ADD ITEM");
     var asset=new assets(assetData);
     asset.save(function (err, a) {
@@ -36,5 +35,5 @@ router.post('/addItem',function (req,res,next) {
     // res.send("WELL?!");
 
     //Doha?should we use save here?
-    // yes we should :D :D 
+    // yes we should :D :D
 });

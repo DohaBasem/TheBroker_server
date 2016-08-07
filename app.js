@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var connector =require('./util/connector');
+var connector = require('./util/connector');
+var clients = require('./routes/client');
 
 var db_url="  mongodb://doha_basem:doha93@ds139725.mlab.com:39725/the_broker_db";
 
@@ -28,24 +29,28 @@ connector(db_url, function(connected){
   if(connected){
     //To route each one to the required page
     app.use('/',routes,cors());
+    app.use('/', routes);
+    app.use('/users', users);
+    app.use('/client', clients);
+
+    app.use(function(req, res, next) {
+      var err = new Error('Not Found');
+      err.status = 404;
+      next(err);
+    });
 
   }
   else{
-
+    app.use(function(req, res, next) {
+      var err = new Error('Not Found');
+      err.status = 404;
+      next(err);
+    });
 
   }
 
 });
-app.use('/', routes);
-app.use('/users', users);
-
-
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
 
 // error handlers
 
