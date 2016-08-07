@@ -8,7 +8,11 @@ router.get('/', function(req, res, next) {
   res.send('Heeey from users');
 });
 
+router.get('/doha',function(req,res,next){
+  console.log("POST HERE");
+  res.send("HERREE");
 
+});
 router.post('/login', function (req, res, next) {
   var userToken = req.header('token');
   User.find({token: userToken}, function (err, users) {
@@ -25,9 +29,11 @@ router.post('/login', function (req, res, next) {
       });
     }
   });
+
 });
 
 router.get('/getAllItems',function (req,res,next) {
+console.log("hello");
      assets.find({},function (err,response) {
        if(err) {
          res.json({
@@ -42,6 +48,8 @@ router.get('/getAllItems',function (req,res,next) {
          });
        }
  })
+  res.send("Sending from getAllItems ");
+  //console.log(res);
 });
 
 module.exports = router;

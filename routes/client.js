@@ -14,6 +14,11 @@ router.post('/addItem',function (req,res,next) {
     owner:req.header("price")
 
     };
+
+    console.log("ADD ITEM");
     var asset=new assets(assetData);
+   // res.send(asset);
+   // res.send("WELL?!");
+
     //Doha?should we use save here?
 })

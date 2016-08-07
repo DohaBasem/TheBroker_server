@@ -7,9 +7,8 @@ var assetSchema=new moongoose.Schema({
     Address:{
         type:String,
     },
-    location:{
-        type:[Number],
-        index:'2d'
+    location_lat:{
+        type:Number
     },
     country:{
         type:String
@@ -22,3 +21,5 @@ var assetSchema=new moongoose.Schema({
         ref:'User'
     }*/
 });
+var Assets=moongoose.model('Assets',assetSchema);
+module.exports=Assets;
